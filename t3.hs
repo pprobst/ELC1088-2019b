@@ -83,5 +83,31 @@ infoFunc = do
     putStrLn "[(cód, (inss,ir), salario)), (cód, (inss, ir), salario)), ...]"
     print res
 
+-- 5
+-- Input: 
+-- sexo (0 ou 1), idade, quantidade de livros.
+-- Output: 
+-- quantidade de livros lidos pelos usuários < 10 anos,
+-- quantidade de mulheres que leram 5 livros ou mais,
+-- média de idade dos homens que leram menos que 5 livros,
+-- percentual de pessoas que não leram livros.
+
+infoLivros = do
+    putStrLn "Insira na ordem SEXO (0 para mulher ou 1 para homem), IDADE, LIVROS:"
+    info <- doWhile (>= 0) readLn
+    let lst = chunksOf 3 info
+    print lst
+    let qtdeLivros = sum (map (\p -> p!!2) $ (filter (\p -> p!!1 < 10) lst))
+    let mulheres = length (filter (\p -> (p!!0 == 0) && (p!!2 >= 5)) lst)
+    let mediaHomens = average (map (\p -> p!!1) $ (filter (\p -> (p!!0 == 1) && (p!!2 < 5)) lst))
+    let percentNaoLe = 100*(length (filter (\p -> p!!2 == 0) lst)) `div` (length lst)
+    putStr "Quantidade total de livros lidos pelos entrevistados menores de 10 anos: "
+    print qtdeLivros
+    putStr "Quantidade de mulheres que leram 5 livros ou mais: "
+    print mulheres
+    putStr "Média de idade dos homens que leram menos que 5 livros: "
+    print mediaHomens
+    putStr "O percentual de pessoas que não leram livros: "
+    print percentNaoLe
 
 -- Por infortúnio, o autor deste trabalho também relembrou o quão infernal é I/O em Haskell...
