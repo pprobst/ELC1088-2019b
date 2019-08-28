@@ -91,7 +91,6 @@ infoFunc = do
 -- quantidade de mulheres que leram 5 livros ou mais,
 -- média de idade dos homens que leram menos que 5 livros,
 -- percentual de pessoas que não leram livros.
-
 infoLivros = do
     putStrLn "Insira na ordem SEXO (0 para mulher ou 1 para homem), IDADE, LIVROS:"
     info <- doWhile (>= 0) readLn
@@ -109,5 +108,47 @@ infoLivros = do
     print mediaHomens
     putStr "O percentual de pessoas que não leram livros: "
     print percentNaoLe
+
+-- 6
+-- Dado uma lista com:
+-- idade da pessoa,
+-- id da pessoa,
+-- opinião de 0 a 10
+-- Calcule e imprima:
+-- quantidade de respostas 10
+-- média de idade das pessoas
+-- percentagem de pesssoas que responderam 5 ou menos para a opinião
+-- id da pessoa mais velha
+calcTeatro = do
+    -- como não foi pedido para ler os dados do usuário, criarei uma lista com dados quaisquer
+    let lst = [[20,1,5],[25,2,10],[15,3,0],[12,4,10],[70,5,7],[80,6,6],[35,7,6],[40,8,10],[50,9,9],[18,10,6]]
+    let respDez = length (filter (\p -> p!!2 == 10) lst)
+    let mediaIdade = average (map (\p -> p!!0) lst)
+    let percentCincoMenos = 100*(length (filter (\p -> p!!2 <= 5) lst)) `div` (length lst)
+    -- Neste caso, só usar 'maxiumum' para pegar o mais velho da lista funciona por maximum considera
+    -- o primeiro elemento de cada lista (ou n-upla).
+    let maisVelho = (maximum lst) !! 1
+    print lst
+    putStr "Quantidade de respostas 10: "
+    print respDez
+    putStr "Média de idade: "
+    print mediaIdade
+    putStr "Percentagem de pessoas que responderam <= 5 para a opinião: "
+    print percentCincoMenos
+    putStr "ID da pessoa mais velha: "
+    print maisVelho
+
+-- 7
+-- Input:
+-- série,
+-- quantos livros lê por mês,
+-- gosta de faze redação (sim-1 não-0)
+-- Output:
+-- quantiade de alunos na terceira série,
+-- a maior quantidade de livros lidos por um aluno da quarta série,
+-- a porcentagem de alunos que não gostam de fazer redação e que estão na terceira série
+infoAlunos = do
+    putStrLn "Insira na ordem SÉRIE, LIVROS, REDAÇÃO: "
+
 
 -- Por infortúnio, o autor deste trabalho também relembrou o quão infernal é I/O em Haskell...
