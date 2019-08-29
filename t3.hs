@@ -55,6 +55,11 @@ calcMedia = doWhile (> 0) readLn >>= print . average
 sumEvenMeanOdd = do
     putStrLn "Insira 10 números:"
     numbers <- replicateM 10 readLn
+    putStr "Quantidade de pares: "
+    print (length (filter even numbers))
+    putStr "Quantidade de ímpares: "
+    print (length (filter odd numbers))
+    putStr "Soma dos pares e média dos ímpares: "
     print (sum (filter even numbers), average (filter odd numbers))
 
 -- 4
@@ -92,7 +97,7 @@ infoFunc = do
 -- média de idade dos homens que leram menos que 5 livros,
 -- percentual de pessoas que não leram livros.
 infoLivros = do
-    putStrLn "Insira na ordem SEXO (0 para mulher ou 1 para homem), IDADE, LIVROS:"
+    putStrLn "Insira na ordem SEXO (0 para mulher ou 1 para homem, negativo para parada), IDADE, LIVROS:"
     info <- doWhile (>= 0) readLn
     let lst = chunksOf 3 info
     print lst
@@ -120,12 +125,12 @@ infoLivros = do
 -- percentagem de pesssoas que responderam 5 ou menos para a opinião
 -- id da pessoa mais velha
 calcTeatro = do
-    -- como não foi pedido para ler os dados do usuário, criarei uma lista com dados quaisquer
+    -- Como não foi pedido para ler os dados do usuário, criarei uma lista com dados quaisquer:
     let lst = [[20,1,5],[25,2,10],[15,3,0],[12,4,10],[70,5,7],[80,6,6],[35,7,6],[40,8,10],[50,9,9],[18,10,6]]
     let respDez = length (filter (\p -> p!!2 == 10) lst)
     let mediaIdade = average (map (\p -> p!!0) lst)
     let percentCincoMenos = 100*(length (filter (\p -> p!!2 <= 5) lst)) `div` (length lst)
-    -- Neste caso, só usar 'maxiumum' para pegar o mais velho da lista funciona por maximum considera
+    -- Neste caso, só usar 'maximum' para pegar o mais velho da lista funciona pois maximum considera
     -- o primeiro elemento de cada lista (ou n-upla).
     let maisVelho = (maximum lst) !! 1
     print lst
@@ -142,13 +147,55 @@ calcTeatro = do
 -- Input:
 -- série,
 -- quantos livros lê por mês,
--- gosta de faze redação (sim-1 não-0)
+-- gosta de fazer redação (sim-1 não-0)
 -- Output:
 -- quantiade de alunos na terceira série,
 -- a maior quantidade de livros lidos por um aluno da quarta série,
 -- a porcentagem de alunos que não gostam de fazer redação e que estão na terceira série
 infoAlunos = do
-    putStrLn "Insira na ordem SÉRIE, LIVROS, REDAÇÃO: "
+    putStrLn "Insira na ordem SÉRIE, LIVROS, REDAÇÃO (número negativo para parada): "
+    info <- doWhile (>= 0) readLn
+    let lst = chunksOf 3 info
+    let qntTerceira = length (filter (\p -> p!!0 == 3) lst)
+    let maxLivrosQuarta = maximum (map (\p -> p!!1) $ (filter (\p -> p!!0 == 4) lst))
+    let percentNaoGostaRedacao = 100*(length (filter (\p -> p!!0 == 3) lst)) `div` (length lst)
+    print lst
+    putStr "Quantidade de alunos na 3ª série: "
+    print qntTerceira
+    putStr "Maior quantidade de livros lidos por um aluno da 4ª série: "
+    print maxLivrosQuarta
+    putStr "Porcentagem de alunos que não gostam de fazer redação e estão na 3ª série: "
+    print percentNaoGostaRedacao
 
+-- 8
+-- Input:
+-- id,
+-- valor,
+-- percentual de aumento.
+-- Output:
+-- novo valor de cada produto,
+-- quantidade de produtos mais caros que R$ 100 após o aumento e que tiveram aumento superior a 5%,
+-- a média de valor dos produtos que não sofreram aumento,
+-- o valor do produto mais caro (após aumento).
+addPercent n per =  n + (n*(per/100))
+
+infoProdutos = do
+    putStrLn "Insira na ordem ID, VALOR, AUMENTO (número negativo para parada): "
+    info <- doWhile (>= 0) readLn
+    let lst = chunksOf 3 info
+    -- lstComAumento é a lista original, mas com cada elemento contendo uma quarta informação: o valor com aumento.
+    let lstComAumento = map (\p -> p ++ [(p!!1 + (p!!1*(p!!2)/100))]) lst
+    let maisQue100 = length $ filter (\p -> p!!3 > 100 && p!!2 > 4) lstComAumento
+    let mediaAumentoZero = average (map (\p -> p!!1) $ (filter (\p -> p!!2 == 0) lst))
+    let maisCaro = maximum (map (\p -> p!!3) lstComAumento)
+    print lst
+    --print lstComAumento
+    putStr "Quantidade de produtos mais caros de R$100,00 e que tiveram aumento superior a 5%: "
+    print maisQue100
+    putStr "Média de valor dos produtos que não sofreram aumento: "
+    print mediaAumentoZero
+    putStr "Valor do produto mais caro após o aumento: "
+    print maisCaro
 
 -- Por infortúnio, o autor deste trabalho também relembrou o quão infernal é I/O em Haskell...
+--
