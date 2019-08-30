@@ -185,7 +185,7 @@ infoProdutos = do
     let lst = chunksOf 3 info
     -- lstComAumento é a lista original, mas com cada elemento contendo uma quarta informação: o valor com aumento.
     let lstComAumento = map (\p -> p ++ [(p!!1 + (p!!1*(p!!2)/100))]) lst
-    let maisQue100 = length $ filter (\p -> p!!3 > 100 && p!!2 > 4) lstComAumento
+    let maisQue100 = length $ filter (\p -> p!!3 > 100 && p!!2 > 5) lstComAumento
     let mediaAumentoZero = average (map (\p -> p!!1) $ (filter (\p -> p!!2 == 0) lst))
     let maisCaro = maximum (map (\p -> p!!3) lstComAumento)
     print lst
