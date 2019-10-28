@@ -1,0 +1,53 @@
+/* Reciere: a compact recipe definition DSL. */
+
+
+/* COMMON RULES */
+
+Recipe:
+    name=Name
+    ingredients=Ingredient
+    steps+=Step
+;
+
+Name:
+    'name:' 
+        name=String
+;
+
+Ingredient:
+   'ingredients:' 
+        (ingredient=String ',' quantity=Quantity)+
+;
+
+Quantity:
+    quantity="to taste" | (quantity=FLOAT unity=MeasureUnity)
+;
+
+Step:
+    'step' name=ID ':'
+        ((descr=STRING ',' time=Time) | (descr=STRING time=""))+
+        ((end="END" | 'NEXT' next=[Step]))
+;
+
+Time:
+    time=FLOAT unity=TimeUnity
+;
+
+
+/* MATCH RULES */
+
+MeasureUnity:
+    "u"|"ml"|"l"|"g"|"mg"|"kg"|"oz"|"fl oz"|"lb"|"teaspoon"|"teaspoons"|"tablespoon"|"tablespoons"|"cup"|"cups"
+;
+
+TimeUnity:
+    "s"|"m"|"h"
+;
+
+String:
+    /[\w ]+/
+;
+
+Comment:
+    /\/\/.*$/
+;

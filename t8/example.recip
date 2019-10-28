@@ -1,0 +1,23 @@
+name: 
+    sugo al pomodoro
+
+ingredients: 
+    tomato, 1 kg
+    finely chopped onion, 80 g
+    extra virgin olive oil, 80 ml
+    sugar, 1 tablespoon
+    tomato purée, 1 tablespoon
+    water, 200 ml
+    basil leaves, to taste
+    salt, to taste
+
+step start: 
+    "do magic stuff", 1 h
+    "test stuff"
+    "do more magic stuff", 7.5 s
+    "test more stuff"
+    NEXT touches
+
+step touches:
+    "magic to make stuff pretty", 30 m
+    END

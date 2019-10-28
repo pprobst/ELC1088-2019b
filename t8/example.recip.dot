@@ -1,0 +1,15 @@
+
+    digraph recipe {
+    fontname = "Iosevka"
+    fontsize = 8
+    node[
+        shape=record
+        style=rounded
+    ]
+    edge[dir=black]
+recipe_name [label="{sugo al pomodoro|tomato . . . . . 1.0 kg\nfinely chopped onion . . . . . 80.0 g\nextra virgin olive oil . . . . . 80.0 ml\nsugar . . . . . 1.0 tablespoon\ntomato purée . . . . . 1.0 tablespoon\nwater . . . . . 200.0 ml\nbasil leaves . . . . . to taste\nsalt . . . . . to taste}", style=""]
+139935424543184[label="{-\> start|do magic stuff, 1.0 h\ntest stuff\ndo more magic stuff, 7.5 s\ntest more stuff}"]
+139935424543184 -> 139935424540944
+139935424540944[label="{touches|magic to make stuff pretty, 30.0 m}"]
+
+}
