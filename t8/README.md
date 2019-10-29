@@ -36,7 +36,8 @@ Atente-se às unidades de medida aceitas pela gramática!
 ```
 "u" | "ml" | "l" | "g" | "mg" | "kg" | "oz" | "fl oz" | 
 "lb" | "teaspoon" | "teaspoons" | "tablespoon" | "tablespoons" | 
-"cup" | "cups"
+"cup" | "cups" | "colher de chá" | "colheres de chá" | 
+"colher de sopa" | "colheres de sopa" | "xícara" | "xícaras"
 ```
 
 * Unidades de tempo:

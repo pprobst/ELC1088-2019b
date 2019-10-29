@@ -11,12 +11,12 @@ Recipe:
 
 Name:
     'name:' 
-        name=String
+        name=MyString
 ;
 
 Ingredient:
    'ingredients:' 
-        (ingredient=String ',' quantity=Quantity)+
+        (ingredient=MyString ',' quantity=Quantity)+
 ;
 
 Quantity:
@@ -24,6 +24,7 @@ Quantity:
 ;
 
 Step:
+    // Using default STRING because it's easier to parse.
     'step' name=ID ':'
         ((descr=STRING ',' time=Time) | (descr=STRING time=""))+
         ((end="END" | 'NEXT' next=[Step]))
@@ -37,14 +38,15 @@ Time:
 /* MATCH RULES */
 
 MeasureUnity:
-    "u"|"ml"|"l"|"g"|"mg"|"kg"|"oz"|"fl oz"|"lb"|"teaspoon"|"teaspoons"|"tablespoon"|"tablespoons"|"cup"|"cups"
+    "u"|"ml"|"l"|"g"|"mg"|"kg"|"oz"|"fl oz"|"lb"|"teaspoon"|"teaspoons"|"tablespoon"|"tablespoons"|"cup"|
+    "cups"|"colher de chá"|"colheres de chá"|"colher de sopa"|"colheres de sopa"|"xícara"|"xícaras"
 ;
 
 TimeUnity:
     "s"|"m"|"h"
 ;
 
-String:
+MyString:
     /[\w ]+/
 ;
 

@@ -21,7 +21,7 @@ from textx import metamodel_from_file
 
 DOT = '''
     digraph recipe {
-    fontname = "Iosevka"
+    fontname = "Open Sans"
     fontsize = 8
     node[
         shape=record

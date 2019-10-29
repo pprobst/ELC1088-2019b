@@ -20,4 +20,8 @@ step start:
 
 step touches:
     "magic to make stuff pretty", 30 m
+    NEXT wrapping
+
+step wrapping:
+    ":)"
     END
