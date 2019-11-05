@@ -1,0 +1,27 @@
+nome: 
+    sugo al pomodoro
+
+ingredientes: 
+    tomate, 1 kg
+    cebola picada fininha, 80 g
+    óleo de oliva extra virgem, 80 ml
+    açúcar, 1 colher de sopa
+    purê de tomate, 1 colher de sopa
+    água, 200 ml
+    manjericão-de-folha-larga, a gosto
+    sal, a gosto
+
+passo início: 
+    "faça coisas mágicas", 1 h
+    "teste coisas"
+    "faça mais coisas mágicas", 7.5 s
+    "teste mais coistas"
+    PROX toques
+
+passo toques:
+    "magic to make stuff pretty", 30 m
+    PROX finalizando
+
+passo finalizando:
+    ":)"
+    FIM

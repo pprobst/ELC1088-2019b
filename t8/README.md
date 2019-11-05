@@ -1,6 +1,7 @@
 # Recipere:
 * uma DSL de definição de receitas culinárias compacta.
     * onde "compacta" é um jeito carinhoso de dizer que sou preguiçoso.
+    * com suporte a ```en_US``` e ```pt_BR```!
 
 ### Dependências
 * Python 3
