@@ -19,7 +19,7 @@ passo início:
     PROX toques
 
 passo toques:
-    "magic to make stuff pretty", 30 m
+    "mágica para deixar tudo bonito", 30 m
     PROX finalizando
 
 passo finalizando:
