@@ -10,24 +10,24 @@ Recipe:
 ;
 
 Name:
-    'name:' 
+    ('name:' | 'nome:')
         name=MyString
 ;
 
 Ingredient:
-   'ingredients:' 
+   ('ingredients:' | 'ingredientes:') 
         (ingredient=MyString ',' quantity=Quantity)+
 ;
 
 Quantity:
-    quantity="to taste" | (quantity=FLOAT unity=MeasureUnity)
+    (quantity="to taste" | quantity="a gosto") | (quantity=FLOAT unity=MeasureUnity)
 ;
 
 Step:
     // Using default STRING because it's easier to parse.
-    'step' name=ID ':'
+    ('step' | 'passo') name=ID ':'
         ((descr=STRING ',' time=Time) | (descr=STRING time=""))+
-        ((end="END" | 'NEXT' next=[Step]))
+        (((end="FIM" | end="END") | (('PROX' | 'NEXT') next=[Step])))
 ;
 
 Time:
